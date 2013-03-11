@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/Users/abuchanan/play-test/app/controllers'
+let g:netrw_dirhist_2='/Users/abuchanan/arp/models/n.europaea/seed'
+let g:netrw_dirhist_3='/Users/abuchanan/scala/src/library/scala/util/parsing/combinator/lexical'
+let g:netrw_dirhist_4='/Users/abuchanan/rafael'
+let g:netrw_dirhist_5='/Users/abuchanan/chet/angular-seed/.git'
+let g:netrw_dirhist_6='/Users/abuchanan/chet/app/img'
+let g:netrw_dirhist_7='/Users/abuchanan/chet/test/unit'
+let g:netrw_dirhist_8='/Users/abuchanan/rafael'
+let g:netrw_dirhist_9='/Users/abuchanan/Documents/eclipse_workspace/GoogleTV-App/LeftNavBarLibrary'
