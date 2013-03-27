@@ -1,0 +1,10 @@
+*.o
+venv
+*.py[co]
+*.sw[po]
+.coverage
+pip-log.txt
+.DS_Store
+build/
+dist/
+*.egg-info/
