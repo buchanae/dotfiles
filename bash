@@ -12,7 +12,10 @@ export PS1='\n\[\033[31m\]\h\[\033[0m\] \[\033[33m\]\W\[\033[0m\] `basename $VIR
 alias diff="diff -bu"
 alias grep="grep -I"
 alias awkt="awk -F'\t'"
-alias ls='ls --color=auto --hide "*.pyc"'
+
+# apparently this doesn't work on Macs
+#alias ls='ls --color=auto --hide "*.pyc"'
+
 # alias activate="source $my_libs/venv/bin/activate"
 
 function abs() { ls -d $PWD/$1 ;}
