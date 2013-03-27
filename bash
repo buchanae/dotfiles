@@ -18,7 +18,7 @@ alias diff="diff -bu"
 alias grep="grep -I"
 alias awkt="awk -F'\t'"
 
-# alias foo="ssh -tt jumphost -tt foo
+# alias foo="ssh -tt jumphost -tt ssh foo"
 
 # apparently this doesn't work on Macs
 #alias ls='ls --color=auto --hide "*.pyc"'
