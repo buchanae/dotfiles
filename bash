@@ -7,7 +7,12 @@ export LSCOLORS=Gxfxcxdxbxegedabagacad
 
 # prompt 2
 export VIRTUAL_ENV_DISABLE_PROMPT=1
+
+# from server
 export PS1='\n\[\033[31m\]\h\[\033[0m\] \[\033[33m\]\W\[\033[0m\] `basename $VIRTUAL_ENV 2> /dev/null` \[\e[0;35m\]`echo $BEV_PROJECT 2> /dev/null`\[\e[0m\]\n'
+
+# from laptop
+export PS1='\[\033[31m\]\W$(__git_ps1 " (%s)")\$ \[\033[0m\]'
 
 alias diff="diff -bu"
 alias grep="grep -I"
