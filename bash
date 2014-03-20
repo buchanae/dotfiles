@@ -25,7 +25,14 @@ alias awkt="awk -F'\t'"
 
 # alias activate="source $my_libs/venv/bin/activate"
 
-function abs() { ls -d $PWD/$1 ;}
+function abs() {
+  python -c '
+import os, sys;
+print sys.argv
+for path in sys.argv[1:]:
+    print os.path.realpath(path)
+' $@
+}
 
 source ~/.git-completion.sh
 
