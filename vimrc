@@ -1,4 +1,5 @@
 set bs=2
+set laststatus=2
 set clipboard=unnamed
 set paste
 set ruler
@@ -82,3 +83,4 @@ endif
 
 set autoindent
 let vimclojure#ParenRainbow = 1
+set backupcopy=yes
