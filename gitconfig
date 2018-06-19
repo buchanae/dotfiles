@@ -8,3 +8,6 @@
 	ui = auto
 [github]
 	user = abuchanan
+[alias]
+	branch = branch --sort=committerdate
+	br = branch --sort=committerdate
