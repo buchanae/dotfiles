@@ -1,3 +1,4 @@
+let g:go_version_warning = 0
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -5,19 +6,16 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-" Plugin 'junegunn/limelight.vim'
-Plugin 'othree/yajs.vim'
 Plugin 'tikhomirov/vim-glsl'
 Plugin 'fatih/vim-go'
-Plugin 'dart'
 Plugin 'molokai'
-
-Plugin 'reedes/vim-colors-pencil'
-Plugin 'jacoborus/tender'
-Plugin 'itchyny/lightline.vim'
 Plugin 'pangloss/vim-javascript'
-Plugin 'vim-scripts/nextval'
 
+" paragraph formatting
+" commented out because Im' not sure it should apply to all files
+" but I want to keep it here for reference. Maybe add some filetype
+" matching for this
+" set formatoptions=tq2ac
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -55,6 +53,8 @@ map <S-k> <Nop>
 
 let g:pydiction_location = '/Users/abuchanan/.vim/pydiction-1.2/complete-dict'
 
+let g:go_fmt_command = "goimports"
+
 " command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis | wincmd p | diffthis
 "filetype plugin on
 
@@ -73,6 +73,7 @@ au BufNewFile,BufRead *.cljs set filetype=clojure
 au BufNewFile,BufRead *.less set filetype=less
 au BufNewFile,BufRead *.mtr set filetype=miter
 au BufNewFile,BufRead *.geo set filetype=glsl
+au BufNewFile,BufRead *.star set filetype=python
 "au BufNewFile,BufRead *.vert,*.frag set filetype=glsl
 
 
@@ -81,9 +82,25 @@ autocmd FileType make set noexpandtab
 autocmd TextChanged,TextChangedI *.vert silent write
 autocmd TextChanged,TextChangedI *.frag silent write
 autocmd TextChanged,TextChangedI *.geo silent write
-autocmd TextChanged,TextChangedI *.muse.js silent write
+autocmd TextChanged,TextChangedI *muse.js silent write
+autocmd TextChanged,TextChangedI *.glsl silent write
 
 syntax on
+
+" Set the title of the Terminal to the currently open file
+function! SetTerminalTitle()
+    let titleString = expand('%:t')
+    if len(titleString) > 0
+        let &titlestring = expand('%:t')
+        " this is the format iTerm2 expects when setting the window title
+        let args = "\033];".&titlestring."\007"
+        let cmd = 'silent !echo -e "'.args.'"'
+        execute cmd
+        redraw!
+    endif
+endfunction
+
+autocmd BufEnter * call SetTerminalTitle()
 
 " Tell vim to remember certain things when we exit
 "  '10  :  marks will be remembered for up to 10 previously edited files
@@ -121,21 +138,13 @@ augroup END
 "else
   " For 8-color 16-color terminals or for gvim, just use the
   " regular :colorscheme command.
-  colorscheme tender
+  colorscheme molokai
 "endif
 
-let g:lightline = { 'colorscheme': 'tender' }
 set nocompatible               " be iMproved
 
-" Color name (:help cterm-colors) or ANSI code
-let g:limelight_conceal_ctermfg = 'gray'
-let g:limelight_conceal_ctermfg = 240
-
-" Color name (:help gui-colors) or RGB color
-let g:limelight_conceal_guifg = 'DarkGray'
-let g:limelight_conceal_guifg = '#777777'
-
+set hlsearch
 set autoindent
 set backupcopy=yes
-let g:go_fmt_autosave = 0
 let g:go_template_autocreate = 0
+let g:go_fmt_command = "goimports"
